@@ -1,0 +1,4 @@
+{'nome': 'pao de queijo', 'tipo': 'salgado', 'quantidade': 20, 'preco': 50.0}
+{'nome': 'bolo', 'tipo': 'doce', 'quantidade': 10, 'preco': 25.5}
+{'nome': 'leite do Dieter', 'tipo': 'liquido', 'quantidade': 30, 'preco': 25.5}
+{'nome': 'ovos do Dieter', 'tipo': 'doce', 'quantidade': 20, 'preco': 5.0}
