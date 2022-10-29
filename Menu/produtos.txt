@@ -1,0 +1,2 @@
+{'nome': 'Leitinho do Ditter', 'tipo': 'Bebida', 'preco': '69', 'quantidade': '8000'}
+{'nome': 'Ovo', 'tipo': 'Alimento', 'preco': '50', 'quantidade': '12'}
