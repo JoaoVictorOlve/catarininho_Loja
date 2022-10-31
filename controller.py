@@ -1,24 +1,24 @@
-def cadastroProduto(produto):
+def cadastroProduto(produto):                       #lista onde serão cadastrados os produtos
 
-    with open('produtos.txt', 'a') as arquivo:
-        arquivo.write(str(produto)+"\n")
+    with open('produtos.txt', 'a') as arquivo:       
+        arquivo.write(str(produto)+"\n")            #Insere os produtos cadastrados dentro do arquivo txt
 
 
 def procuraItem(nome):
     index=0
     flag=0
-    arquivo = open("produtos.txt", "r") 
+    arquivo = open("produtos.txt", "r")            #Le linha por linha no arquivo txt
     for line in arquivo:
         index +=1
-        if nome == eval(line)['nome']:
-            chave = index
+        if nome == eval(line)['nome']:             #Procura o produto na lista  
+            chave = index                   
             flag =1
     if flag == 0:
         arquivo.close()
-        return 0
+        return 0                                   #Caso nao ache o produto ele retorna 0
     else:
         arquivo.close()
-        return chave
+        return chave                               #Se achou o produto retorna a chave dele
 
 
 def apagarProduto(findProduto):
@@ -48,29 +48,24 @@ def apagarProduto(findProduto):
                 arquivo.write(str(lista[x])+'\n') #Repõe os produtos da lista para dentro do arquivo de texto
 
 def venda(nome):
-    chave=procuraItem(nome)
+    chave=procuraItem(nome)             # Utiliza a função para procurar o item
     temp={}
     if chave != False:
-        quant=int(input("digite a quantidade vendida"))
+        quant=int(input("digite a quantidade vendida: "))
         
         try:
-            with open('produtos.txt', 'r') as fr:
-                # reading line by line
-                lines = fr.readlines()
+            with open('produtos.txt', 'r') as fr:               
+                lines = fr.readlines()                      # Le linha por linha
                 
-          
-                # pointer for position
-                ptr = 1
+                ptr = 1                                     # Ponteiro para posição
                 
-                # opening in writing mode
-                with open('produtos.txt', 'w') as fw:
+                with open('produtos.txt', 'w') as fw:       # Abrindo no modo de escrita
                     for line in lines:
                         
-                        # we want to remove 5th line
                         if ptr != chave:
                             fw.write(line)
                         else:
-                            dif = eval(line)['quantidade'] -quant
+                            dif = eval(line)['quantidade'] -quant       # Subtrai a quantidade que foi vendida do item
 
                             temp=eval(line)
                             
@@ -81,16 +76,16 @@ def venda(nome):
                         ptr = ptr+1
                 
         except:
-            print("Oops! someting error")
+            print("Oops! someting error")           
         with open('produtos.txt', 'a') as fd:
-            fd.write(str(temp)+'\n')
+            fd.write(str(temp)+'\n')                    # Escreve a diferença que foi vendida no arquivo txt
     else:
         print("NAO ENCONTRADO")
 
 def relatorio():
     with open('produtos.txt','r') as arquivo:  
         for line in arquivo:
-            dif = eval(line)['quantidadeInicial']-eval(line)['quantidade']
-            print("{} vendid@s: {}\n".format(eval(line)['nome'],dif))
+            dif = eval(line)['quantidadeInicial']-eval(line)['quantidade']              
+            print("{} vendid@s: {}\n".format(eval(line)['nome'],dif))                   # Mostra a quantidade que foi vendida
             lucro=dif*eval(line)['preco']
-            print("lucro na venda de {}: {}\n".format(eval(line)['nome'],lucro))
+            print("lucro na venda de {}: {}\n".format(eval(line)['nome'],lucro))        # Mostra o lucro bruto que foi obtido
