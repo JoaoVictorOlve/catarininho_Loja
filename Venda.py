@@ -15,10 +15,10 @@ def procuraItem(nome):
         return chave
 def venda(nome):
     chave=procuraItem(nome)
+    temp={}
     if chave != False:
         quant=int(input("digite a quantidade vendida"))
-        arquivo = open("produtos.txt", "w") 
-        index=0
+        
         try:
             with open('produtos.txt', 'r') as fr:
                 # reading line by line
@@ -27,7 +27,7 @@ def venda(nome):
           
                 # pointer for position
                 ptr = 1
-      
+                
                 # opening in writing mode
                 with open('produtos.txt', 'w') as fw:
                     for line in lines:
@@ -35,13 +35,22 @@ def venda(nome):
                         # we want to remove 5th line
                         if ptr != chave:
                             fw.write(line)
-                        dif=eval(line)['quantidade']-quant
-                        eval(line)['quantidade'] = dif
-                        lucro=dif*eval(line)['preco']
-                        line=dif
+                        else:
+                            dif = eval(line)['quantidade'] -quant
+                            
+                            temp=eval(line)
+                            
+                            
+                            temp['quantidade'] = dif
+                            print(temp)
+                            
+                            lucro = dif*eval(line)['preco']
+                        ptr = ptr+1
+                
         except:
             print("Oops! someting error")
-               
+        with open('produtos.txt', 'a') as arquivo:
+            arquivo.write("\n"+str(temp))
     else:
         print("NAO ENCONTRADO")
 
