@@ -25,7 +25,7 @@ def menu():
                 case 2:
                     relatorio()
                 case 3:
-                    nome=str(input("digite o nome do item vendido"))
+                    nome=str(input("digite o nome do item vendido: "))
                     venda(nome)
                 case 4:
                     produto = input('Informe o produto: ')
