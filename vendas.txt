@@ -1,3 +1,6 @@
 item:bruto lucro:10.0 quantidade vendida:5
 item:agua lucro:15.0 quantidade vendida:5
 item:agua lucro:18.0 quantidade vendida:6
+item:ALPSITE lucro:400.0 quantidade vendida:20
+item:ahua lucro:400 quantidade vendida:20
+item:Ovos do Dieter lucro:200.0 quantidade vendida:10

@@ -9,7 +9,7 @@ def menu():
 
             print('\n O que podemos fazer para você hoje?\n')
 
-            menu = int(input('1. -> Cadastro de Produto\n2. -> Relatorio de Vendas\n5. -> Venda\n5. -> Aumentar quantidade do produto\n3. -> Venda\n0. -> Sair\n>: '))
+            menu = int(input('1. -> Cadastro de Produto\n2. -> Relatorio de Vendas\n3. -> Venda\n4. -> Apagar Produto\n5. -> Aumentar Estoque\n0. -> Sair\n>: '))
 
             match menu:
                 case 1:

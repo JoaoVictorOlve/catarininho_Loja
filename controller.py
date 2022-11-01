@@ -1,6 +1,3 @@
-from datetime import datetime
-
-
 def cadastroProduto(produto):
 
     with open('produtos.txt', 'a') as arquivo:

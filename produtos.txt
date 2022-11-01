@@ -1,1 +1,2 @@
-{'nome': 'ahua', 'preco': 20, 'quantidade': 543}
+{'nome': 'ahua', 'preco': 20, 'quantidade': 563}
+{'nome': 'ALPSITE', 'tipo': 'doce', 'preco': 20.0, 'quantidade': 460, 'quantidadeInicial': 30}
