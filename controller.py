@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 def cadastroProduto(produto):
 
     with open('produtos.txt', 'a') as arquivo:
@@ -18,8 +21,7 @@ def procuraItem(nome):
         return 0
     else:
         arquivo.close()
-        return chave
-
+        return chave  
 
 def apagarProduto(findProduto):
         #Lista onde vão ser colocados os produtos dentro do arquivo
@@ -47,12 +49,10 @@ def apagarProduto(findProduto):
             for x in range(0, len(lista)): #Lê a lista indice por indice
                 arquivo.write(str(lista[x])+'\n') #Repõe os produtos da lista para dentro do arquivo de texto
 
-def venda(nome):
+def venda(nome,quant):
     chave=procuraItem(nome)
     temp={}
     if chave != False:
-        quant=int(input("digite a quantidade vendida"))
-        
         try:
             with open('produtos.txt', 'r') as fr:
                 # reading line by line
@@ -76,7 +76,10 @@ def venda(nome):
                             
                             
                             temp['quantidade'] = dif
+                            lucro=quant*eval(line)['preco']
                             
+                            with open('vendas.txt', 'a') as fv:
+                                fv.write("item:{} lucro:{} quantidade vendida:{}\n".format(eval(line)['nome'],lucro,quant))
                             
                         ptr = ptr+1
                 
@@ -88,9 +91,47 @@ def venda(nome):
         print("NAO ENCONTRADO")
 
 def relatorio():
-    with open('produtos.txt','r') as arquivo:  
-        for line in arquivo:
-            dif = eval(line)['quantidadeInicial']-eval(line)['quantidade']
-            print("{} vendid@s: {}\n".format(eval(line)['nome'],dif))
-            lucro=dif*eval(line)['preco']
-            print("lucro na venda de {}: {}\n".format(eval(line)['nome'],lucro))
+    with open('vendas.txt','r') as arquivo:  
+        print(arquivo.read())
+
+
+def aumentarEstoque(estoque,quant):
+    chave=procuraItem(estoque)
+    temp={}
+    if chave != False:
+        
+        
+        try:
+            with open('produtos.txt', 'r') as fr:
+                # reading line by line
+                lines = fr.readlines()
+          
+                # pointer for position
+                ptr = 1
+                
+                # opening in writing mode
+                with open('produtos.txt', 'w') as fw:
+                    for line in lines:
+                        
+                      
+                        if ptr != chave:
+                            fw.write(line)
+                        else:
+                            dif = eval(line)['quantidade'] + quant
+
+                            temp=eval(line)
+                            
+                            
+                            temp['quantidade'] = dif
+                            
+                            
+                            
+                            
+                        ptr = ptr+1
+                
+        except:
+            print("Oops! someting error")
+        with open('produtos.txt', 'a') as fd:
+            fd.write(str(temp)+'\n')
+    else:
+        print("NAO ENCONTRADO")
