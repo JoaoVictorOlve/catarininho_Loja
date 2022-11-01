@@ -1,4 +1,4 @@
-from controller import cadastroProduto,venda,apagarProduto,relatorio
+from controller import cadastroProduto,venda,apagarProduto,relatorio,aumentarEstoque
 
 def menu():
 
@@ -9,7 +9,7 @@ def menu():
 
             print('\n O que podemos fazer para você hoje?\n')
 
-            menu = int(input('1. -> Cadastro de Produto\n2. -> Relatorio de Vendas\n3. -> Venda\n4. -> Exclussao de produto\n0. -> Sair\n>: '))
+            menu = int(input('1. -> Cadastro de Produto\n2. -> Relatorio de Vendas\n5. -> Venda\n5. -> Aumentar quantidade do produto\n3. -> Venda\n0. -> Sair\n>: '))
 
             match menu:
                 case 1:
@@ -26,10 +26,15 @@ def menu():
                     relatorio()
                 case 3:
                     nome=str(input("digite o nome do item vendido"))
-                    venda(nome)
+                    quant=int(input("digite a quantidade vendida: "))
+                    venda(nome,quant)
                 case 4:
                     produto = input('Informe o produto: ')
                     apagarProduto(produto)
+                case 5:
+                    estoque = str(input('Informe o nome do produto que queira aumentar o estoque\n>'))
+                    quant=int(input("digite a quantidade aumentada: "))
+                    aumentarEstoque(estoque,quant)
                 
         
 
