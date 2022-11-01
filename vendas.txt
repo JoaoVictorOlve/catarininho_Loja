@@ -1,0 +1,3 @@
+item:bruto lucro:10.0 quantidade vendida:5
+item:agua lucro:15.0 quantidade vendida:5
+item:agua lucro:18.0 quantidade vendida:6
